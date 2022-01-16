@@ -1,0 +1,10 @@
+datasource:
+  url: "jdbc:postgresql://localhost:5432/postapp"
+  username: "postgres"
+  password: "pg123456"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+server:
+  port: 9000
