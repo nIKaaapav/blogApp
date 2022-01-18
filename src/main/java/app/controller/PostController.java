@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.entity.Comment;
 import app.entity.Post;
 import app.services.PostService;
 import lombok.RequiredArgsConstructor;
@@ -48,5 +49,20 @@ public class PostController {
     @DeleteMapping("{id}/star")
     public void deleteStarInPost(@PathVariable("id") Long id){
         postService.deleteStarInPost(id);
+    }
+
+    @GetMapping("{id}/comments")
+    public void getCommentsPostById(@PathVariable("id") Long id){
+        postService.getCommentsPostById(id);
+    }
+
+    @PostMapping("{id}/comments")
+    public void saveCommentsPost(@PathVariable("id") Long id, @RequestBody String text){
+        postService.saveCommentsPost(id, text);
+    }
+
+    @GetMapping("{id}/comments/{commentId}")
+    public Comment getComment(@PathVariable("id") Long postId, @PathVariable("commentId") Long commentId){
+        return postService.getComment(commentId);
     }
 }

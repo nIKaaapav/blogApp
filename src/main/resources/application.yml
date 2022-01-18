@@ -1,10 +1,11 @@
-datasource:
-  url: "jdbc:postgresql://localhost:5432/postapp"
-  username: "postgres"
-  password: "pg123456"
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
+spting:
+  datasource:
+    url: "postgres://ysjfwdvctalngh:593ceda7b2c3f70700913d4d30de3a03a7e3d1f2f6dba859da20b2c53db6b40e@ec2-3-95-130-249.compute-1.amazonaws.com:5432/d3m13r9hb4kt26"
+    username: "ysjfwdvctalngh"
+    password: "593ceda7b2c3f70700913d4d30de3a03a7e3d1f2f6dba859da20b2c53db6b40e"
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: create
 server:
   port: 9000

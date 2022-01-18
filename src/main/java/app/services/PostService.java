@@ -1,6 +1,8 @@
 package app.services;
 
+import app.entity.Comment;
 import app.entity.Post;
+import app.repositories.CommentRepository;
 import app.repositories.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
@@ -14,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
 
     public List<Post> getPosts(String title, Sort.Direction sort){
 
@@ -58,5 +61,23 @@ public class PostService {
             newPost.setStar(false);
             postRepository.save(newPost);
         }
+    }
+
+    public List<Comment> getCommentsPostById(Long id){
+       return commentRepository.findAllByPostId(id);
+    }
+
+    public void saveCommentsPost(Long postId, String test){
+        Optional<Post> postById = postRepository.findById(postId);
+        if (postById.isPresent()){
+            Comment comment = new Comment();
+            comment.setPost(postById.get());
+            comment.setText(test);
+            commentRepository.save(comment);
+        }
+    }
+
+    public Comment getComment(Long commentId){
+        return commentRepository.getOne(commentId);
     }
 }

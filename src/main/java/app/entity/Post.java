@@ -1,19 +1,24 @@
 package app.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @RequiredArgsConstructor
+@SuppressWarnings("ID")
+@EqualsAndHashCode(callSuper = false)
+@ToString
 public class Post  extends AbstractEntity<Post> {
     private String title;
     private String content;
 
-    @Setter
     private boolean star = false;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "post")
+//    @JoinColumn(name = "comments")
+    List<Comment> comments = new ArrayList<>();
 }
