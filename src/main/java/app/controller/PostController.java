@@ -34,4 +34,19 @@ public class PostController {
     public void deletePost(@PathVariable("id") Long id){
         postService.deletePost(id);
     }
+
+    @GetMapping("/star")
+    public List<Post> getStarPost(){
+        return postService.getStarPost();
+    }
+
+    @PutMapping("{id}/star")
+    public void updatePostLikeStar(@PathVariable("id") Long id){
+        postService.updatePostLikeStar(id);
+    }
+
+    @DeleteMapping("{id}/star")
+    public void deleteStarInPost(@PathVariable("id") Long id){
+        postService.deleteStarInPost(id);
+    }
 }
