@@ -3,6 +3,7 @@ package app.controller;
 import app.entity.Post;
 import app.services.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +16,8 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("")
-    public List<Post> getPosts(){
-        return  postService.getPosts();
+    public List<Post> getPosts(@RequestParam(value = "title", required = false) String title, @RequestParam(value = "sort", required = false) Sort.Direction sort){
+        return postService.getPosts(title, sort);
     }
 
     @PostMapping("")
