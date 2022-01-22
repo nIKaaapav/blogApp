@@ -12,7 +12,13 @@ import java.util.List;
 @SuppressWarnings("ID")
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class Post  extends AbstractEntity<Post> {
+public class Post{
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private Long id;
+
     private String title;
     private String content;
 

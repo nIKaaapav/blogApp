@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    @Query(value = "SELECT * FROM comment WHERE post_id = postID", nativeQuery = true)
-    List<Comment> findAllByPostId(Long postID);
+//    @Query(value = "SELECT * FROM comment WHERE comment.post_id = postID", nativeQuery = true)
+    List<Comment> findAllByPostId(Long id);
 }

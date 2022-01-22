@@ -13,7 +13,13 @@ import java.time.LocalDateTime;
 @SuppressWarnings("ID")
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public class Comment extends AbstractEntity<Comment> {
+public class Comment {
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.IDENTITY
+    )
+    private Long id;
+
     private String text;
 
     @CreationTimestamp

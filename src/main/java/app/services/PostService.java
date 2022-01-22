@@ -78,6 +78,6 @@ public class PostService {
     }
 
     public Comment getComment(Long commentId){
-        return commentRepository.getOne(commentId);
+        return commentRepository.findById(commentId).get();
     }
 }
